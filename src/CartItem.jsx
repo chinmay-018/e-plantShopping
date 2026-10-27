@@ -36,7 +36,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleCheckoutShopping = () => {
-    alert('Functionality to be added for future reference');
+    alert('Coming Soon: Checkout functionality will be available in future releases!');
   };
 
   return (
@@ -57,7 +57,7 @@ const CartItem = ({ onContinueShopping }) => {
                   <span className="cart-item-quantity-value">{item.quantity}</span>
                   <button className="cart-item-button" onClick={() => handleIncrement(item)}>+</button>
                 </div>
-                <div className="cart-item-total">Subtotal: ${calculateTotalCost(item)}</div>
+                <div className="cart-item-total">Total: ${calculateTotalCost(item)}</div>
                 <button className="cart-item-delete" onClick={() => handleRemove(item)}>Delete</button>
               </div>
             </div>
@@ -66,7 +66,7 @@ const CartItem = ({ onContinueShopping }) => {
       </div>
       <div className="cart-actions">
         <button className="continue-btn" onClick={(e) => onContinueShopping(e)}>Continue Shopping</button>
-        <button className="checkout-btn" onClick={handleCheckoutShopping}>Checkout</button>
+        <button className="checkout-btn" onClick={handleCheckoutShopping}>Coming Soon</button>
       </div>
     </div>
   );
