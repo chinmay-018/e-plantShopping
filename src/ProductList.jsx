@@ -19,20 +19,38 @@ function ProductList() {
         {
           name: "Snake Plant",
           image: "https://cdn.pixabay.com/photo/2021/01/22/06/04/snake-plant-5939187_1280.jpg",
-          description: "Produces oxygen at night, improving overall air quality.",
+          description: "Produces oxygen at night, purifying indoor air efficiently.",
           cost: "$15"
         },
         {
           name: "Spider Plant",
           image: "https://cdn.pixabay.com/photo/2018/07/05/16/00/spider-plant-3518582_1280.jpg",
-          description: "Filters toxins like formaldehyde and xylene naturally.",
+          description: "Filters toxins like formaldehyde and carbon monoxide.",
           cost: "$12"
         },
         {
           name: "Peace Lily",
           image: "https://cdn.pixabay.com/photo/2019/06/12/14/14/peace-lilies-4269365_1280.jpg",
-          description: "Removes airborne toxins and mold spores efficiently.",
+          description: "Removes mold spores and toxins while producing white blooms.",
           cost: "$18"
+        },
+        {
+          name: "Boston Fern",
+          image: "https://cdn.pixabay.com/photo/2020/04/30/19/55/boston-fern-5114414_1280.jpg",
+          description: "Acts as a natural humidifier and removes air pollutants.",
+          cost: "$14"
+        },
+        {
+          name: "Rubber Plant",
+          image: "https://cdn.pixabay.com/photo/2020/02/15/11/49/flower-4850729_1280.jpg",
+          description: "Broad dark leaves that trap airborne dust particles.",
+          cost: "$22"
+        },
+        {
+          name: "Aloe Vera",
+          image: "https://cdn.pixabay.com/photo/2018/04/02/07/42/leaf-3283175_1280.jpg",
+          description: "Purifies air and offers natural soothing gel for minor burns.",
+          cost: "$10"
         }
       ]
     },
@@ -48,77 +66,35 @@ function ProductList() {
         {
           name: "Jasmine",
           image: "https://images.unsplash.com/photo-1592729961255-cc3a44631b3b?auto=format&fit=crop&w=600&q=80",
-          description: "Exotic, sweet fragrance that blooms during evenings.",
+          description: "Sweet fragrance with blossoms opening during late evenings.",
           cost: "$16"
         },
         {
           name: "Rosemary",
           image: "https://cdn.pixabay.com/photo/2019/10/11/07/12/rosemary-4541241_1280.jpg",
-          description: "Invigorating herb commonly used in kitchen culinary arts.",
+          description: "Invigorating herb aroma frequently used in culinary arts.",
           cost: "$14"
+        },
+        {
+          name: "Mint",
+          image: "https://cdn.pixabay.com/photo/2016/01/07/18/31/mint-1126282_1280.jpg",
+          description: "Refreshing, crisp scent that repels pests naturally.",
+          cost: "$11"
+        },
+        {
+          name: "Lemon Balm",
+          image: "https://cdn.pixabay.com/photo/2017/07/07/16/01/lemon-balm-2481829_1280.jpg",
+          description: "Pleasant citrus scent that relieves anxiety and uplifts mood.",
+          cost: "$13"
+        },
+        {
+          name: "Eucalyptus",
+          image: "https://cdn.pixabay.com/photo/2017/08/07/22/33/eucalyptus-2608620_1280.jpg",
+          description: "Distinct menthol scent that aids easy, clear breathing.",
+          cost: "$19"
         }
       ]
-    }
-  ];
-
-  const handleAddToCart = (plant) => {
-    dispatch(addItem(plant));
-    setAddedToCart(prev => ({ ...prev, [plant.name]: true }));
-  };
-
-  const handleContinueShopping = (e) => {
-    e.preventDefault();
-    setShowCart(false);
-  };
-
-  return (
-    <div>
-      <nav className="navbar">
-        <div className="navbar-logo" onClick={() => setShowCart(false)}>
-          <h3>Paradise Nursery</h3>
-          <span>Where Green Meets Serenity</span>
-        </div>
-        <div className="navbar-links">
-          <button className="nav-btn" onClick={() => setShowCart(false)}>Plants</button>
-          <div className="cart-icon-container" onClick={() => setShowCart(true)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-            <span className="cart-count">{totalQuantity}</span>
-          </div>
-        </div>
-      </nav>
-
-      {!showCart ? (
-        <div className="product-grid-container">
-          {plantsArray.map((categoryObj, index) => (
-            <div key={index} className="category-section">
-              <h2 className="category-title">{categoryObj.category}</h2>
-              <div className="plants-list">
-                {categoryObj.plants.map((plant, pIdx) => (
-                  <div key={pIdx} className="product-card">
-                    <img src={plant.image} alt={plant.name} className="product-image" />
-                    <h3 className="product-title">{plant.name}</h3>
-                    <p className="product-desc">{plant.description}</p>
-                    <p className="product-price">{plant.cost}</p>
-                    <button
-                      className={`add-to-cart-btn ${addedToCart[plant.name] ? 'added' : ''}`}
-                      disabled={addedToCart[plant.name]}
-                      onClick={() => handleAddToCart(plant)}
-                    >
-                      {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <CartItem onContinueShopping={handleContinueShopping} />
-      )}
-    </div>
-  );
-}
-
-export default ProductList;
+    },
+    {
+      category: "Low Maintenance Plants",
+      plants:
