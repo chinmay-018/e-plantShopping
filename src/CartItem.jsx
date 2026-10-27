@@ -35,8 +35,8 @@ const CartItem = ({ onContinueShopping }) => {
     return (numericCost * item.quantity).toFixed(2);
   };
 
-  const handleCheckoutShopping = () => {
-    alert('Coming Soon: Checkout functionality will be available in future releases!');
+  const handleCheckoutShopping = (e) => {
+    alert('Functionality to be added for future reference');
   };
 
   return (
@@ -64,9 +64,9 @@ const CartItem = ({ onContinueShopping }) => {
           ))
         )}
       </div>
-      <div className="cart-actions">
-        <button className="continue-btn" onClick={(e) => onContinueShopping(e)}>Continue Shopping</button>
-        <button className="checkout-btn" onClick={handleCheckoutShopping}>Coming Soon</button>
+      <div className="cart-actions" style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '20px' }}>
+        <button className="get-started-button" onClick={(e) => onContinueShopping(e)}>Continue Shopping</button>
+        <button className="get-started-button1" onClick={(e) => handleCheckoutShopping(e)}>Checkout</button>
       </div>
     </div>
   );
