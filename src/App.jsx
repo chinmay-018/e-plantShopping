@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="app-container">
       {!showProductList ? (
-        <div className="landing-page">
+        <div className="landing-page background-image">
           <div className="landing-content">
             <h1>Welcome To Paradise Nursery</h1>
             <div className="divider"></div>
